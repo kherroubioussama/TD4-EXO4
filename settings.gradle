@@ -1,0 +1,2 @@
+rootProject.name = "TD4-EXO4"
+include ':app'
