@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_lesson_fragement.*
 import java.util.*
@@ -22,11 +23,15 @@ class Lesson_fragement : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val lesson1:Lesson= Lesson(Module("BDA","2h", Enseignant("Amrouche","Karima")),Date(2021,2,22))
-        val lesson2:Lesson= Lesson(Module("ANAD","2h", Enseignant("Imloul","Karima")),Date(2021,2,23))
+        val lesson1:Lesson= Lesson(Module("BDA","2", Enseignant("Amrouche","Karima")),Date(2021,2,22,9,0))
+        val lesson2:Lesson= Lesson(Module("ANAD","2", Enseignant("Imloul","Karima")),Date(2021,2,23,11,0))
+        val lesson3:Lesson= Lesson(Module("TDM","2", Enseignant("Batata","Sofiane")),Date(2021,2,24,9,0))
         data.add(lesson1)
         data.add(lesson2)
-        val layoutManager = LinearLayoutManager(activity)
+        data.add(lesson3)
+        val layoutManager = GridLayoutManager(activity,
+
+            resources.getInteger(R.integer.num))
         val adapter = LessonAdapter(activity as MainActivity, data)
         lessonList.layoutManager = layoutManager
         lessonList.adapter = adapter
